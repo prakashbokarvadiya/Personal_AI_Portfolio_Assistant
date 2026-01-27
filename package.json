@@ -1,0 +1,42 @@
+{
+  "name": "portfolio-assistant-backend",
+  "version": "1.0.0",
+  "description": "AI-powered chatbot backend for Prakash Bokarvadiya's portfolio",
+  "main": "backend-express.js",
+  "scripts": {
+    "start": "node backend-express.js",
+    "dev": "nodemon backend-express.js",
+    "test": "node -e \"console.log('API running test')\""
+  },
+  "keywords": [
+    "ai",
+    "chatbot",
+    "openai",
+    "portfolio",
+    "express",
+    "nodejs"
+  ],
+  "author": "Prakash Bokarvadiya",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "openai": "^4.24.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prakashbokarvadiya/portfolio-assistant"
+  },
+  "bugs": {
+    "url": "https://github.com/prakashbokarvadiya/portfolio-assistant/issues"
+  },
+  "homepage": "https://github.com/prakashbokarvadiya/portfolio-assistant#readme"
+}

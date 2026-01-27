@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prakash Bokarvadiya | Data Science Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --highlight-color: #e94560;
+            --text-light: #eaeaea;
+            --text-dark: #16213e;
+            --border-color: #0f3460;
+            --success-color: #4ade80;
+            --warning-color: #f59e0b;
+            --danger-color: #e94560;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--highlight-color);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 35px 20px 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content h1 {
+            font-size: 2.1rem;
+            margin-bottom: 6px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            line-height: 1.3;
+        }
+
+        .header-content .tagline {
+            font-size: 0.95rem;
+            color: var(--highlight-color);
+            margin-bottom: 8px;
+            margin-top: 3px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .header-content .career-objective {
+            font-size: 0.88rem;
+            color: rgba(234, 234, 234, 0.85);
+            margin-top: 10px;
+            font-style: italic;
+            line-height: 1.5;
+            letter-spacing: 0.3px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styling */
+        section {
+            margin: 50px 0;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--highlight-color);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-top: 20px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            margin-top: 0;
+        }
+
+        .about-text p {
+            margin: 15px 0;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .about-profile {
+            text-align: center;
+        }
+
+        .profile-image-placeholder {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent-color), var(--highlight-color));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.3);
+            border: 3px solid white;
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 25px rgba(15, 52, 96, 0.2);
+            border-color: var(--highlight-color);
+            transform: translateY(-2px);
+        }
+
+        .project-header {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-header h3 {
+            color: white;
+            margin: 0;
+        }
+
+        .project-header .domain {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .toggle-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .project-content {
+            padding: 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .project-card.active .project-content {
+            max-height: 2000px;
+        }
+
+        .project-section {
+            margin: 15px 0;
+        }
+
+        .project-section strong {
+            color: var(--accent-color);
+            display: inline-block;
+            min-width: 130px;
+        }
+
+        .project-section ul {
+            list-style: none;
+            padding-left: 130px;
+            margin-top: 5px;
+        }
+
+        .project-section li {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .project-section li:before {
+            content: "→ ";
+            color: var(--highlight-color);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .metrics {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid var(--success-color);
+        }
+
+        .metrics strong {
+            color: var(--success-color);
+        }
+
+        .chart-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e0f2ff 100%);
+            border: 2px dashed var(--accent-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            font-size: 14px;
+            font-weight: 500;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .skill-category h4 {
+            color: var(--accent-color);
+            margin: 15px 0 10px 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+
+        .skill-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+        }
+
+        .contact-info {
+            margin: 30px 0;
+            font-size: 1.05rem;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--highlight-color);
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            border: 2px solid var(--accent-color);
+            background: white;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(15, 52, 96, 0.3);
+        }
+
+        .btn.primary {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+
+        .btn.primary:hover {
+            background: var(--highlight-color);
+            border-color: var(--highlight-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--highlight-color);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 1.7rem;
+            }
+
+            .header-content .tagline {
+                font-size: 0.9rem;
+            }
+
+            .header-content .career-objective {
+                font-size: 0.82rem;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            section {
+                padding: 25px;
+                margin: 35px 0;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .toggle-icon {
+                align-self: flex-end;
+                margin-top: -25px;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content h1 {
+                font-size: 1.4rem;
+            }
+
+            .header-content .tagline {
+                font-size: 0.85rem;
+            }
+
+            .header-content .career-objective {
+                font-size: 0.78rem;
+            }
+
+            .header-content .tagline {
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            section {
+                padding: 20px;
+            }
+
+            .profile-image-placeholder {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeIn 0.5s ease;
+        }
+
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .chatbot-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--highlight-color));
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(233, 69, 96, 0.5);
+        }
+
+        .chatbot-button.active {
+            background: linear-gradient(135deg, var(--highlight-color), var(--accent-color));
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.8);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-window.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .chatbot-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .chatbot-messages::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        .message {
+            display: flex;
+            gap: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.assistant {
+            justify-content: flex-start;
+        }
+
+        .message-bubble {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .message.user .message-bubble {
+            background: var(--accent-color);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.assistant .message-bubble {
+            background: #e8e8e8;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message.error .message-bubble {
+            background: #ffe8e8;
+            color: var(--danger-color);
+        }
+
+        .message.loading .message-bubble {
+            background: #e8e8e8;
+            color: #666;
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 12px 16px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #999;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                opacity: 0.5;
+                transform: translateY(0);
+            }
+            30% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        .chatbot-input-area {
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            background: white;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chatbot-input {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: border-color 0.2s ease;
+        }
+
+        .chatbot-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(15, 52, 96, 0.1);
+        }
+
+        .chatbot-send-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .chatbot-send-btn:hover:not(:disabled) {
+            background: var(--highlight-color);
+            transform: translateY(-2px);
+        }
+
+        .chatbot-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 480px) {
+            .chatbot-window {
+                width: 90vw;
+                height: 70vh;
+                max-width: 400px;
+                bottom: 70px;
+            }
+
+            .message-bubble {
+                max-width: 85%;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            section {
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+
+            .project-card {
+                border: 1px solid #ccc;
+            }
+
+            .project-content {
+                max-height: 2000px !important;
+            }
+
+            .toggle-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Prakash Bokarvadiya</h1>
+            <div class="tagline">Data Science | Machine Learning | Business Analytics</div>
+            <p class="career-objective">Entry-level Data Scientist with hands-on experience in Python, SQL, and Machine Learning. Focused on building business-impactful ML solutions through data-driven decision making.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Career Overview</h3>
+                    <p><strong>Entry-level Data Scientist</strong> with hands-on experience in Python, SQL, and Machine Learning. Passionate about solving real-world business problems with data-driven insights and building scalable ML solutions.</p>
+                    
+                    <h3>Key Strengths</h3>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>✓ End-to-end ML pipeline development (EDA → Modeling → Deployment)</li>
+                        <li>✓ Business-focused modeling with cost-aware decision thresholds</li>
+                        <li>✓ Advanced feature engineering and preprocessing pipelines</li>
+                        <li>✓ Model explainability and threshold optimization</li>
+                        <li>✓ FastAPI & Streamlit for production deployments</li>
+                    </ul>
+
+                    <h3>Career Objective</h3>
+                    <p>Seeking an entry-level <strong>Data Scientist / Data Analyst</strong> role where I can leverage Python, SQL, and ML expertise to solve real-world business challenges, drive revenue protection, minimize financial loss, and support data-driven decision making.</p>
+                </div>
+                <div class="about-profile">
+                    <img src="profile.jpeg" alt="Prakash Bokarvadiya" class="profile-image">
+                    <p style="color: #888; font-size: 0.9rem;">Prakash Bokarvadiya</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <p style="margin-bottom: 25px; color: #666;">Click on a project to expand and view detailed information, technical approach, and business impact metrics.</p>
+            
+            <div class="projects-container">
+                <!-- Project 1: Credit Risk Modeling -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>Credit Risk Modeling System</h3>
+                            <div class="domain">Banking & Financial Services</div>
+                        </div>
+                        <div class="toggle-icon">▼</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <strong>Problem Statement:</strong>
+                            <p>Predict customers likely to default on loans to minimize financial loss and improve lending decisions in banking institutions.</p>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Dataset & Features:</strong>
+                            <ul>
+                                <li>German Credit Dataset (~1000 records)</li>
+                                <li>Target: Customer risk classification (default vs. non-default)</li>
+                                <li>Feature Engineering: Credit per month, job/housing stability, account flags, age buckets</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Modeling Approach:</strong>
+                            <ul>
+                                <li>Logistic Regression (baseline)</li>
+                                <li>Random Forest (moderate complexity)</li>
+                                <li>XGBoost (selected for better calibration)</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Model Evaluation:</strong>
+                            <ul>
+                                <li>ROC-AUC & PR-AUC for model comparison</li>
+                                <li>Business-cost aware metrics (False Negative = high cost)</li>
+                                <li>Threshold optimization: 0.35 → reduced missed defaults</li>
+                                <li>Risk buckets: Low / Medium / High → aligned with bank approval workflow</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics">
+                            <strong>Business Impact:</strong> Threshold optimization reduced missed defaults, minimized financial loss, and enabled risk-based lending decisions with improved approval accuracy.
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Deployment:</strong>
+                            <ul>
+                                <li>Model serialization with joblib</li>
+                                <li>API-ready for integration with lending platforms</li>
+                                <li>Risk scoring for real-time customer assessment</li>
+                            </ul>
+                        </div>
+
+                        <img src="Project1_graph.jpeg" alt="Credit Risk Modeling: ROC Curve & Risk Distribution" style="width: 100%; border-radius: 8px; margin: 20px 0;">
+                    </div>
+                </div>
+
+                <!-- Project 2: Customer Churn Prediction -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>Customer Churn Prediction System</h3>
+                            <div class="domain">Telecom & Subscription Services</div>
+                        </div>
+                        <div class="toggle-icon">▼</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <strong>Problem Statement:</strong>
+                            <p>Identify subscription customers likely to churn to enable proactive retention campaigns and revenue protection.</p>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Dataset & Preprocessing:</strong>
+                            <ul>
+                                <li>Telecom/Subscription service customer data</li>
+                                <li>Pipeline-based preprocessing: one-hot encoding, scaling, tenure buckets</li>
+                                <li>Handling missing values and feature normalization</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Modeling Approach:</strong>
+                            <ul>
+                                <li>Logistic Regression (final selected model)</li>
+                                <li>Random Forest (feature importance analysis)</li>
+                                <li>Gradient Boosting (performance comparison)</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Model Evaluation:</strong>
+                            <ul>
+                                <li>Recall-focused metrics (prioritize catching churners)</li>
+                                <li>Precision-Recall curves for threshold tuning (~0.35)</li>
+                                <li>SHAP for global & local model explainability</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics">
+                            <strong>Business Impact:</strong> Proactive churn identification enables targeted retention campaigns, protects revenue, improves customer lifetime value (LTV), and reduces customer acquisition costs (CAC).
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Deployment:</strong>
+                            <ul>
+                                <li>FastAPI REST API for real-time predictions</li>
+                                <li>Integration with CRM for automatic targeting</li>
+                                <li>SHAP-based explainability for business stakeholders</li>
+                            </ul>
+                        </div>
+
+                        <img src="project2_graph.jpeg" alt="Customer Churn Prediction: Distribution & SHAP Importance" style="width: 100%; border-radius: 8px; margin: 20px 0;">
+                    </div>
+                </div>
+
+                <!-- Project 3: House Price Prediction -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>House Price Prediction with Advanced Feature Engineering</h3>
+                            <div class="domain">Real Estate & Regression Modeling</div>
+                        </div>
+                        <div class="toggle-icon">▼</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <strong>Problem Statement:</strong>
+                            <p>Predict house prices with high accuracy while addressing underprediction bias in the tail (expensive properties) for real estate valuation.</p>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Dataset & Features:</strong>
+                            <ul>
+                                <li>Kaggle House Prices dataset (79 features, ~1460 records)</li>
+                                <li>Advanced feature engineering: log transforms, interaction terms, total area calculations</li>
+                                <li>Handling missing values and categorical encoding</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Modeling Approach:</strong>
+                            <ul>
+                                <li>Linear Regression (baseline)</li>
+                                <li>Ridge & Lasso (regularization comparison)</li>
+                                <li>XGBoost (selected for robust predictions)</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Key Debugging & Improvements:</strong>
+                            <ul>
+                                <li>Identified 26% underprediction error in tail risk (expensive homes)</li>
+                                <li>Fixed by using raw SalePrice target (no log transforms for target)</li>
+                                <li>Disabled Lasso's aggressive shrinkage, increased XGBoost tree depth</li>
+                                <li>Applied robust regularization for stability</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Model Evaluation:</strong>
+                            <ul>
+                                <li>MAE: 0.88% (excellent accuracy)</li>
+                                <li>Tail-risk analysis for expensive properties</li>
+                                <li>Stratified cross-validation RMSE verification</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics">
+                            <strong>Business Impact:</strong> Tail-risk-aware regression improves real-world deployment reliability, ensures accurate pricing for premium properties, and supports fair market valuations.
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Deployment:</strong>
+                            <ul>
+                                <li>FastAPI inference service with real-time pricing</li>
+                                <li>Partial input handling for missing features</li>
+                                <li>Robust schema alignment for production data</li>
+                            </ul>
+                        </div>
+
+                        <img src="project3_graph.jpeg" alt="House Price Prediction: Actual vs Predicted & Feature Importance" style="width: 100%; border-radius: 8px; margin: 20px 0;">
+                    </div>
+                </div>
+
+                <!-- Project 4: Fraud Detection -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>Credit Card Fraud Detection System</h3>
+                            <div class="domain">Fintech & Security</div>
+                        </div>
+                        <div class="toggle-icon">▼</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <strong>Problem Statement:</strong>
+                            <p>Detect fraudulent credit card transactions in real-time under extreme class imbalance (<0.2% fraud) without excessive customer friction.</p>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Dataset & Features:</strong>
+                            <ul>
+                                <li>Credit Card transactions dataset (~284k transactions)</li>
+                                <li>Extreme class imbalance: <0.2% fraud rate</li>
+                                <li>PCA-transformed features + custom engineering</li>
+                                <li>Feature engineering: log_amount, time-of-day, transaction velocity, interaction features</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Modeling Approach:</strong>
+                            <ul>
+                                <li>Logistic Regression (baseline for imbalanced data)</li>
+                                <li>Random Forest (ensemble approach)</li>
+                                <li>XGBoost (selected for superior recall-precision trade-off)</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Handling Class Imbalance:</strong>
+                            <ul>
+                                <li>SMOTE for synthetic sample generation</li>
+                                <li>Stratified cross-validation</li>
+                                <li>Recall-focused evaluation metrics</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Threshold Optimization:</strong>
+                            <ul>
+                                <li>Default threshold 0.5 → Tuned threshold based on business costs</li>
+                                <li>False Negative cost >> False Positive cost (missed fraud >> false alarms)</li>
+                                <li>Result: Reduced missed fraud by 60%, recall ~91%</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics">
+                            <strong>Business Impact:</strong> Advanced fraud detection minimizes financial loss, protects customer assets, reduces chargeback costs, and maintains customer trust without excessive false positive friction.
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Deployment:</strong>
+                            <ul>
+                                <li>FastAPI backend for real-time fraud scoring</li>
+                                <li>Streamlit frontend for interactive prediction exploration</li>
+                                <li>Sub-second latency for transaction approval workflow</li>
+                            </ul>
+                        </div>
+
+                        <img src="project4_graph.jpeg" alt="Fraud Detection: Confusion Matrix, ROC & Precision-Recall" style="width: 100%; border-radius: 8px; margin: 20px 0;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>🐍 Python Programming</h4>
+                    <ul class="skill-list">
+                        <li>Data structures: Lists vs tuples, dictionaries, sets</li>
+                        <li>Memory management: Shallow vs deep copy</li>
+                        <li>Functional programming: Lambda, map, filter</li>
+                        <li>Exception handling & error management</li>
+                        <li>Object-oriented programming (OOP)</li>
+                    </ul>
+
+                    <h4>🗄️ SQL & Databases</h4>
+                    <ul class="skill-list">
+                        <li>Queries: WHERE vs HAVING clauses</li>
+                        <li>Joins: INNER, LEFT, RIGHT, FULL OUTER</li>
+                        <li>Aggregation: COUNT(*) vs COUNT(column), GROUP BY</li>
+                        <li>Window functions: ROW_NUMBER, RANK, LAG, LEAD</li>
+                        <li>Data cleaning: Duplicate detection & deletion</li>
+                    </ul>
+
+                    <h4>📊 Data Analysis</h4>
+                    <ul class="skill-list">
+                        <li>Exploratory Data Analysis (EDA)</li>
+                        <li>Data cleaning & preprocessing</li>
+                        <li>Feature engineering & selection</li>
+                        <li>Statistical analysis & hypothesis testing</li>
+                        <li>Data visualization (Matplotlib, Seaborn, Plotly)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>🤖 Machine Learning</h4>
+                    <ul class="skill-list">
+                        <li>Supervised learning: Regression, Classification</li>
+                        <li>Model training & validation</li>
+                        <li>Overfitting vs underfitting detection</li>
+                        <li>Regularization: L1, L2, Elastic Net</li>
+                        <li>Cross-validation & hyperparameter tuning</li>
+                    </ul>
+
+                    <h4>📈 Model Evaluation & Metrics</h4>
+                    <ul class="skill-list">
+                        <li>Confusion matrix & derived metrics</li>
+                        <li>Precision, Recall, F1-score, Accuracy</li>
+                        <li>ROC-AUC & Precision-Recall curves</li>
+                        <li>Threshold tuning for business optimization</li>
+                        <li>Model explainability (SHAP, Feature importance)</li>
+                    </ul>
+
+                    <h4>💼 Business-Focused ML</h4>
+                    <ul class="skill-list">
+                        <li>Class imbalance handling (SMOTE, cost-aware learning)</li>
+                        <li>Business cost minimization & decision thresholds</li>
+                        <li>Revenue protection & churn prevention</li>
+                        <li>Risk classification & quantification</li>
+                        <li>Deployment & API integration</li>
+                    </ul>
+
+                    <h4>🚀 Deployment & Tools</h4>
+                    <ul class="skill-list">
+                        <li>FastAPI for ML backend services</li>
+                        <li>Streamlit for interactive dashboards</li>
+                        <li>Model serialization (joblib, pickle)</li>
+                        <li>sklearn pipelines for modular workflows</li>
+                        <li>Git & version control</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p style="font-size: 1.1rem; margin: 20px 0;">I'm always interested in discussing data science, machine learning, and business impact. Feel free to reach out!</p>
+                
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a href="mailto:prakashbokarvadiya0@gmail.com">prakashbokarvadiya0@gmail.com</a></p>
+                    <p><strong>Location:</strong> India</p>
+                </div>
+
+                <div class="social-buttons">
+                    <a href="https://www.linkedin.com/in/prakash-bokarvadiya-609001369/" target="_blank" class="btn primary">
+                        <span>🔗</span> LinkedIn Profile
+                    </a>
+                    <a href="https://github.com/prakashbokarvadiya" target="_blank" class="btn primary">
+                        <span>💻</span> GitHub Portfolio
+                    </a>
+                    <a href="mailto:prakashbokarvadiya0@gmail.com" class="btn">
+                        <span>📧</span> Send Email
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Prakash Bokarvadiya. All rights reserved. | <a href="#about">Back to Top</a></p>
+        <p style="margin-top: 10px; font-size: 0.85rem;">Built with HTML, CSS & JavaScript | Optimized for all devices</p>
+    </footer>
+
+    <script>
+        // Project Card Toggle Functionality
+        document.querySelectorAll('.project-card').forEach(card => {
+            const header = card.querySelector('.project-header');
+            
+            header.addEventListener('click', () => {
+                card.classList.toggle('active');
+            });
+        });
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Chatbot Functionality
+        class PortfolioChatbot {
+            constructor(apiUrl = 'http://localhost:8000/chat') {
+                this.apiUrl = apiUrl;
+                this.conversationHistory = [];
+                this.isOpen = false;
+                this.isLoading = false;
+                this.init();
+            }
+
+            init() {
+                this.createChatbotUI();
+                this.attachEventListeners();
+            }
+
+            createChatbotUI() {
+                const chatbotHTML = `
+                    <div class="chatbot-container">
+                        <button class="chatbot-button" id="chatbot-toggle" title="Chat with Portfolio Assistant">
+                            💬
+                        </button>
+                        <div class="chatbot-window" id="chatbot-window">
+                            <div class="chatbot-header">
+                                <h3>Prakash's Portfolio Assistant</h3>
+                                <button class="chatbot-close" id="chatbot-close">✕</button>
+                            </div>
+                            <div class="chatbot-messages" id="chatbot-messages">
+                                <div class="message assistant">
+                                    <div class="message-bubble">
+                                        Hi! I'm Prakash's Portfolio Assistant. Ask me about his projects, skills, or experience. How can I help? 👋
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chatbot-input-area">
+                                <input 
+                                    type="text" 
+                                    class="chatbot-input" 
+                                    id="chatbot-input" 
+                                    placeholder="Ask about projects, skills..."
+                                    autocomplete="off"
+                                >
+                                <button class="chatbot-send-btn" id="chatbot-send">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                document.body.insertAdjacentHTML('beforeend', chatbotHTML);
+            }
+
+            attachEventListeners() {
+                const toggleBtn = document.getElementById('chatbot-toggle');
+                const closeBtn = document.getElementById('chatbot-close');
+                const sendBtn = document.getElementById('chatbot-send');
+                const input = document.getElementById('chatbot-input');
+                const window = document.getElementById('chatbot-window');
+
+                toggleBtn.addEventListener('click', () => this.toggleChat());
+                closeBtn.addEventListener('click', () => this.closeChat());
+                sendBtn.addEventListener('click', () => this.sendMessage());
+                input.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !this.isLoading) this.sendMessage();
+                });
+            }
+
+            toggleChat() {
+                this.isOpen ? this.closeChat() : this.openChat();
+            }
+
+            openChat() {
+                this.isOpen = true;
+                document.getElementById('chatbot-window').classList.add('active');
+                document.getElementById('chatbot-toggle').classList.add('active');
+                document.getElementById('chatbot-input').focus();
+            }
+
+            closeChat() {
+                this.isOpen = false;
+                document.getElementById('chatbot-window').classList.remove('active');
+                document.getElementById('chatbot-toggle').classList.remove('active');
+            }
+
+            async sendMessage() {
+                const input = document.getElementById('chatbot-input');
+                const message = input.value.trim();
+
+                if (!message || this.isLoading) return;
+
+                // Add user message to UI
+                this.addMessageToUI(message, 'user');
+                input.value = '';
+                this.isLoading = true;
+
+                // Add user message to history
+                this.conversationHistory.push({
+                    role: 'user',
+                    content: message
+                });
+
+                // Show loading indicator
+                this.showLoadingIndicator();
+
+                try {
+                    // Send to backend
+                    const response = await fetch(this.apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            message: message,
+                            conversation_history: this.conversationHistory
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+
+                    // Remove loading indicator
+                    this.removeLoadingIndicator();
+
+                    if (data.success) {
+                        const assistantMessage = data.response;
+                        this.addMessageToUI(assistantMessage, 'assistant');
+                        
+                        // Add to history
+                        this.conversationHistory.push({
+                            role: 'assistant',
+                            content: assistantMessage
+                        });
+
+                        // Keep conversation history manageable (last 10 exchanges)
+                        if (this.conversationHistory.length > 20) {
+                            this.conversationHistory = this.conversationHistory.slice(-20);
+                        }
+                    } else {
+                        this.addMessageToUI('Sorry, something went wrong. Please try again.', 'error');
+                    }
+                } catch (error) {
+                    this.removeLoadingIndicator();
+                    console.error('Chatbot error:', error);
+                    this.addMessageToUI(
+                        'Unable to connect to the assistant. Please ensure the backend is running at http://localhost:8000',
+                        'error'
+                    );
+                }
+
+                this.isLoading = false;
+            }
+
+            addMessageToUI(message, sender) {
+                const messagesContainer = document.getElementById('chatbot-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}`;
+
+                const bubble = document.createElement('div');
+                bubble.className = `message-bubble ${sender === 'error' ? 'error' : ''}`;
+                bubble.textContent = message;
+
+                messageDiv.appendChild(bubble);
+                messagesContainer.appendChild(messageDiv);
+
+                // Auto-scroll to bottom
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            showLoadingIndicator() {
+                const messagesContainer = document.getElementById('chatbot-messages');
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'message assistant loading';
+                loadingDiv.id = 'loading-indicator';
+                
+                loadingDiv.innerHTML = `
+                    <div class="typing-indicator">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                `;
+                
+                messagesContainer.appendChild(loadingDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            removeLoadingIndicator() {
+                const loadingDiv = document.getElementById('loading-indicator');
+                if (loadingDiv) loadingDiv.remove();
+            }
+        }
+
+        // Initialize chatbot when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Configure API URL - change this if backend is on different port/host
+            const BACKEND_URL = 'http://localhost:8000/chat';
+            window.portfolioChatbot = new PortfolioChatbot(BACKEND_URL);
+        });
+
+        // Analytics & Tracking (Optional - for production use)
+        // You can add Google Analytics or other tracking here
+
+        // Console Message for Developers
+        console.log('%cPrakash Bokarvadiya - Data Science Portfolio', 'font-size: 20px; color: #0f3460; font-weight: bold;');
+        console.log('%cLooking for talented developers? Check out the code!', 'font-size: 12px; color: #666;');
+
+    </script>
+</body>
+</html>
