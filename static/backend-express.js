@@ -34,7 +34,9 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: ["https://personal-ai-portfolio-assistant-sl98.onrender.com"]
+}));
 app.use(express.json());
 
 // Portfolio context (same as Python backend)
