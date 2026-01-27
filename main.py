@@ -5,6 +5,8 @@ Secure Groq API integration with environment variables
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from typing import Optional
 import os
@@ -13,7 +15,11 @@ from groq import Groq
 
 load_dotenv()
 
-app = FastAPI(title="Portfolio Assistant API")
+app = FastAPI()
+
+
+
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -160,17 +166,18 @@ async def chat(request: ChatRequest):
         system_prompt = PORTFOLIO_CONTEXT + "\n\nUser Question: " + request.message
         
         try:
-            response = client.messages.create(
+            response = client.chat.completions.create(
                 model="llama-3.1-8b-instant",
                 messages=[
-                    {"role": "user", "content": system_prompt}
+                    {"role": "system", "content": PORTFOLIO_CONTEXT},
+                    {"role": "user", "content": request.message}
                 ],
                 max_tokens=500,
                 temperature=0.7,
             )
             
-            assistant_message = response.choices[0].message.content.strip()
-            
+            assistant_message = response.choices[0].message.content
+
         except Exception as api_error:
             print(f"Groq API Error: {str(api_error)}")
             raise HTTPException(
@@ -202,14 +209,16 @@ async def health_check():
 
 
 @app.get("/")
-async def root():
-    return {
-        "message": "Prakash Bokarvadiya's Portfolio Assistant API",
-        "endpoints": {
-            "chat": "POST /chat - Send a message to the assistant",
-            "health": "GET /health - Health check"
-        }
-    }
+async def home():
+            return FileResponse("index.html")
+# async def root():
+#     return {
+#         "message": "Prakash Bokarvadiya's Portfolio Assistant API",
+#         "endpoints": {
+#             "chat": "POST /chat - Send a message to the assistant",
+#             "health": "GET /health - Health check"
+#         }
+#     }
 
 
 if __name__ == "__main__":
