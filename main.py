@@ -52,41 +52,36 @@ Seeking entry-level Data Scientist / Data Analyst role to solve real-world busin
 
 KEY PROJECTS:
 
-1. CREDIT RISK MODELING SYSTEM (Banking Domain)
-   - Problem: Predict customers likely to default on loans
-   - Dataset: German Credit Dataset (~1000 records)
-   - Features: Credit per month, job/housing stability, account flags
-   - Models: Logistic Regression, Random Forest, XGBoost (selected)
-   - Metrics: ROC-AUC (0.78), PR-AUC, threshold optimization (0.35)
-   - Business Impact: Reduced missed defaults, minimized financial loss, risk-based lending decisions
-   - Deployment: Joblib model, API-ready
+1. QUANTPULSE AI — AUTOMATED BTC/USDT TRADING SYSTEM (FEATURED PROJECT)
+   - Problem: Build a fully automated BTC/USDT trading advisory system with real-time Buy/Sell/Hold recommendations.
+   - Features: 5-model ML ensemble (XGBoost, LightGBM, CatBoost, RF, Meta-Model), 12 professional trading rules, 40+ engineered features (Price Action, Momentum, Volatility, Volume).
+   - Data: Live OHLCV from Binance API (3m, 5m, 15m timeframes), SQLite storage.
+   - Signal Engine: Multi-timeframe confirmation, 9-point trade filter, ATR-based SL/TP levels, regime-scaled sizing.
+   - Business Impact: 24/7 automated advisory, reduced false signals via 12-rule filter, zero user intervention.
+   - Deployment: Flask REST API, real-time dashboard, Groq LLM chatbot integration.
 
-2. CUSTOMER CHURN PREDICTION SYSTEM (Telecom/Subscription)
-   - Problem: Identify customers likely to churn
-   - Preprocessing: Pipeline-based, one-hot encoding, scaling, tenure buckets
-   - Models: Logistic Regression (final), Random Forest, Gradient Boosting
-   - Metrics: Recall-focused, Precision-Recall, threshold tuning (~0.35)
-   - Explainability: SHAP for global & local insights
-   - Business Impact: Proactive retention, revenue protection
-   - Deployment: FastAPI API for predictions
+2. CUSTOMER CHURN PREDICTION SYSTEM (Telecom/Subscription Domain)
+   - Problem: Identify customers likely to churn for proactive retention.
+   - Preprocessing: Pipeline-based cleaning, feature scaling, tenure buckets.
+   - Models: Logistic Regression (final), Random Forest, Gradient Boosting.
+   - Evaluation: Recall-focused benchmarks, threshold tuning (~0.35), SHAP explainability.
+   - Business Impact: Proactive retention campaigns, revenue protection, improved Customer LTV.
+   - Deployment: FastAPI real-time prediction API.
 
-3. HOUSE PRICE PREDICTION (Real Estate / Regression)
-   - Dataset: Kaggle House Prices (79 features, ~1460 records)
-   - Features: Log transforms, interactions, total area calculations
-   - Models: Linear, Ridge, Lasso, XGBoost (selected)
-   - Performance: MAE 0.88%, tail-risk analysis
-   - Key Achievement: Fixed 26% underprediction error in tail (expensive homes)
-   - Deployment: FastAPI inference service, partial input handling
-   - Business Insight: Tail-risk-aware regression improves deployment reliability
+3. CREDIT RISK MODELING SYSTEM (Banking & Financial Services)
+   - Problem: Predict loan defaults to minimize financial loss.
+   - Dataset: German Credit Dataset.
+   - Models: Logistic Regression, Random Forest, XGBoost (selected).
+   - Metrics: ROC-AUC, PR-AUC, business-cost aware threshold optimization (0.35).
+   - Business Impact: Reduced missed defaults, enabled risk-based lending approval workflow.
+   - Deployment: Joblib serialization, API-ready scoring service.
 
-4. CREDIT CARD FRAUD DETECTION SYSTEM (Fintech/Security)
-   - Problem: Real-time fraud detection under extreme class imbalance (<0.2%)
-   - Dataset: Credit Card transactions (~284k), PCA features
-   - Features: Log_amount, time-of-day, transaction velocity, interactions
-   - Models: Logistic Regression, Random Forest, XGBoost (selected)
-   - Metrics: Recall ~91%, threshold tuned for business cost
-   - Business Impact: Reduced missed fraud 60%, protects assets, minimizes chargebacks
-   - Deployment: FastAPI backend, Streamlit frontend for real-time prediction
+4. CREDIT CARD FRAUD DETECTION SYSTEM (Fintech & Security)
+   - Problem: Real-time fraud detection under extreme class imbalance (<0.2%).
+   - Dataset: 284k transactions, PCA features.
+   - Handling Imbalance: SMOTE, stratified CV, recall-focused tuning.
+   - Business Impact: Reduced missed fraud by 60%, protected customer assets, sub-second latency for approval.
+   - Deployment: FastAPI backend, Streamlit interactive dashboard.
 
 TECHNICAL SKILLS:
 

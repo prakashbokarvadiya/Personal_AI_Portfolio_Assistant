@@ -185,6 +185,31 @@
             transform: translateY(-2px);
         }
 
+        /* Unique Style for Featured Project */
+        .project-card.featured-project {
+            border: 3px solid var(--highlight-color);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2);
+            transform: scale(1.01);
+        }
+
+        .project-card.featured-project .project-header {
+            background: linear-gradient(135deg, var(--highlight-color), var(--primary-color));
+        }
+
+        .project-card.featured-project::before {
+            content: "FEATURED PROJECT";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--highlight-color);
+            color: white;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-bottom-left-radius: 10px;
+            z-index: 10;
+        }
+
         .project-header {
             padding: 20px;
             background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
@@ -815,7 +840,153 @@
             <p style="margin-bottom: 25px; color: #666;">Click on a project to expand and view detailed information, technical approach, and business impact metrics.</p>
             
             <div class="projects-container">
-                <!-- Project 1: Credit Risk Modeling -->
+                <!-- Project 1: QuantPulse AI — BTC Trading System (FEATURED) -->
+                <div class="project-card featured-project">
+                    <div class="project-header">
+                        <div>
+                            <h3>QuantPulse AI — Automated BTC/USDT Trading System</h3>
+                            <div class="domain">Algorithmic Trading & ML Ensemble System</div>
+                        </div>
+                        <div class="toggle-icon">▼</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <strong>Problem Statement:</strong>
+                            <p>Build a fully automated BTC/USDT trading advisory system that fetches live market data from Binance, applies a 5-model ML ensemble with 12 professional trading rules, and delivers real-time Buy/Sell/Hold recommendations with exact Entry, Stop Loss, and Take-Profit levels — every 3 minutes, 24/7.</p>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Data Pipeline:</strong>
+                            <ul>
+                                <li>Live OHLCV candle data from Binance REST API across 3 timeframes (3m, 5m, 15m)</li>
+                                <li>1,000 candles per request with full timestamp validation</li>
+                                <li>SQLite storage for historical training and live inference</li>
+                                <li>Background scheduler auto-refreshes predictions every 3 minutes</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Feature Engineering (40+ Features):</strong>
+                            <ul>
+                                <li>Price Action: body size, wick ratios, high-low range, price change %</li>
+                                <li>Momentum: RSI (7/14/21), MACD histogram & cross signals, slope/lag features</li>
+                                <li>Volatility: ATR percentile (7/14), Bollinger Band position & width</li>
+                                <li>Volume & Orderflow: taker buy ratio, delta volume, volume lag 1/2/3</li>
+                                <li>Market Structure: Higher-High/Lower-Low flags, compression flag, ADX strength</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>ML Ensemble (5 Models):</strong>
+                            <ul>
+                                <li>XGBoost — gradient boosting for price pattern recognition</li>
+                                <li>LightGBM — fast boosting optimized for volume & momentum features</li>
+                                <li>CatBoost — handles categorical regime features with high accuracy</li>
+                                <li>Random Forest — noise-resistant ensemble base model</li>
+                                <li>Meta-Model (Logistic Regression) — stacks all 4 base models into final prediction</li>
+                                <li>Walk-Forward validation with 0.6% barrier labeling to filter noisy micro-moves</li>
+                                <li>Mutual Information feature selection — top 25 from 80+ engineered features</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Signal Engine (12 Professional Trading Rules):</strong>
+                            <ul>
+                                <li>Multi-Timeframe (MTF) Confirmation: 15m sets trend, 5m confirms, 3m times entry</li>
+                                <li>9-Point Trade Filter: ADX &gt; 20, Volume Ratio &gt; 0.7, RSI 15–85, Regime ≠ VOLATILE</li>
+                                <li>ATR-Based Levels: SL at −1× ATR, TP1 at +1×, TP2 at +1.8×, TP3 at +3× ATR</li>
+                                <li>Support/Resistance detection, EMA touch entry, signal smoothing via majority vote</li>
+                                <li>Regime-scaled position sizing with partial exit strategy (50% / 30% / 20%)</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Model Evaluation:</strong>
+                            <ul>
+                                <li>Walk-Forward validation across multiple time-ordered folds (no data leakage)</li>
+                                <li>Regime-specific models: separate training for TRENDING vs RANGING markets</li>
+                                <li>PnL simulation: win rate and P&amp;L tracked over last 30 live predictions</li>
+                                <li>Dynamic confidence threshold (50–65%) auto-adjusted by volatility percentile</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics">
+                            <strong>Business Impact:</strong> End-to-end automated system eliminates manual chart analysis. 5-model ensemble with 12-rule signal filter significantly reduces false signals. Real-time Flask dashboard with Groq LLM chatbot (Llama-3.3-70B) delivers instant trade advisory — zero zero intervention needed, running 24/7.
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Deployment:</strong>
+                            <ul>
+                                <li>Flask REST API with 10+ endpoints (/api/predictions, /api/mtf_signal, /api/btc_trend, /api/pnl)</li>
+                                <li>Real-time web dashboard: live BTC price ticker, per-TF signal cards, MTF alignment panel, 9-point filter display</li>
+                                <li>Groq LLM AI chatbot — auto-sends full market context every 3 minutes</li>
+                                <li>Redis/in-memory cache with TTL + background auto-retrain scheduler</li>
+                                <li>Dual API key fallback system for 24/7 uninterrupted operation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Customer Churn Prediction System -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3>Customer Churn Prediction System</h3>
+                            <div class="domain">Telecom & Subscription Services</div>
+                        </div>
+                        <div class="toggle-icon">▼</div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-section">
+                            <strong>Problem Statement:</strong>
+                            <p>Identify subscription customers likely to churn to enable proactive retention campaigns and revenue protection.</p>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Dataset & Preprocessing:</strong>
+                            <ul>
+                                <li>Telecom/Subscription service customer data</li>
+                                <li>Pipeline-based preprocessing: one-hot encoding, scaling, tenure buckets</li>
+                                <li>Handling missing values and feature normalization</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Modeling Approach:</strong>
+                            <ul>
+                                <li>Logistic Regression (final selected model)</li>
+                                <li>Random Forest (feature importance analysis)</li>
+                                <li>Gradient Boosting (performance comparison)</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Model Evaluation:</strong>
+                            <ul>
+                                <li>Recall-focused metrics (prioritize catching churners)</li>
+                                <li>Precision-Recall curves for threshold tuning (~0.35)</li>
+                                <li>SHAP for global & local model explainability</li>
+                            </ul>
+                        </div>
+
+                        <div class="metrics">
+                            <strong>Business Impact:</strong> Proactive churn identification enables targeted retention campaigns, protects revenue, improves customer lifetime value (LTV), and reduces customer acquisition costs (CAC).
+                        </div>
+
+                        <div class="project-section">
+                            <strong>Deployment:</strong>
+                            <ul>
+                                <li>FastAPI REST API for real-time predictions</li>
+                                <li>Integration with CRM for automatic targeting</li>
+                                <li>SHAP-based explainability for business stakeholders</li>
+                            </ul>
+                        </div>
+
+                        <img src="static/project2_graph.jpeg" alt="Customer Churn Prediction: Distribution & SHAP Importance" style="width: 100%; border-radius: 8px; margin: 20px 0;">
+                    </div>
+                </div>
+
+                <!-- Project 3: Credit Risk Modeling System -->
                 <div class="project-card">
                     <div class="project-header">
                         <div>
@@ -875,135 +1046,7 @@
                     </div>
                 </div>
 
-                <!-- Project 2: Customer Churn Prediction -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <h3>Customer Churn Prediction System</h3>
-                            <div class="domain">Telecom & Subscription Services</div>
-                        </div>
-                        <div class="toggle-icon">▼</div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-section">
-                            <strong>Problem Statement:</strong>
-                            <p>Identify subscription customers likely to churn to enable proactive retention campaigns and revenue protection.</p>
-                        </div>
-
-                        <div class="project-section">
-                            <strong>Dataset & Preprocessing:</strong>
-                            <ul>
-                                <li>Telecom/Subscription service customer data</li>
-                                <li>Pipeline-based preprocessing: one-hot encoding, scaling, tenure buckets</li>
-                                <li>Handling missing values and feature normalization</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-section">
-                            <strong>Modeling Approach:</strong>
-                            <ul>
-                                <li>Logistic Regression (final selected model)</li>
-                                <li>Random Forest (feature importance analysis)</li>
-                                <li>Gradient Boosting (performance comparison)</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-section">
-                            <strong>Model Evaluation:</strong>
-                            <ul>
-                                <li>Recall-focused metrics (prioritize catching churners)</li>
-                                <li>Precision-Recall curves for threshold tuning (~0.35)</li>
-                                <li>SHAP for global & local model explainability</li>
-                            </ul>
-                        </div>
-
-                        <div class="metrics">
-                            <strong>Business Impact:</strong> Proactive churn identification enables targeted retention campaigns, protects revenue, improves customer lifetime value (LTV), and reduces customer acquisition costs (CAC).
-                        </div>
-
-                        <div class="project-section">
-                            <strong>Deployment:</strong>
-                            <ul>
-                                <li>FastAPI REST API for real-time predictions</li>
-                                <li>Integration with CRM for automatic targeting</li>
-                                <li>SHAP-based explainability for business stakeholders</li>
-                            </ul>
-                        </div>
-
-                        <img src="static/project2_graph.jpeg" alt="Customer Churn Prediction: Distribution & SHAP Importance" style="width: 100%; border-radius: 8px; margin: 20px 0;">
-                    </div>
-                </div>
-
-                <!-- Project 3: House Price Prediction -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div>
-                            <h3>House Price Prediction with Advanced Feature Engineering</h3>
-                            <div class="domain">Real Estate & Regression Modeling</div>
-                        </div>
-                        <div class="toggle-icon">▼</div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-section">
-                            <strong>Problem Statement:</strong>
-                            <p>Predict house prices with high accuracy while addressing underprediction bias in the tail (expensive properties) for real estate valuation.</p>
-                        </div>
-
-                        <div class="project-section">
-                            <strong>Dataset & Features:</strong>
-                            <ul>
-                                <li>Kaggle House Prices dataset (79 features, ~1460 records)</li>
-                                <li>Advanced feature engineering: log transforms, interaction terms, total area calculations</li>
-                                <li>Handling missing values and categorical encoding</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-section">
-                            <strong>Modeling Approach:</strong>
-                            <ul>
-                                <li>Linear Regression (baseline)</li>
-                                <li>Ridge & Lasso (regularization comparison)</li>
-                                <li>XGBoost (selected for robust predictions)</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-section">
-                            <strong>Key Debugging & Improvements:</strong>
-                            <ul>
-                                <li>Identified 26% underprediction error in tail risk (expensive homes)</li>
-                                <li>Fixed by using raw SalePrice target (no log transforms for target)</li>
-                                <li>Disabled Lasso's aggressive shrinkage, increased XGBoost tree depth</li>
-                                <li>Applied robust regularization for stability</li>
-                            </ul>
-                        </div>
-
-                        <div class="project-section">
-                            <strong>Model Evaluation:</strong>
-                            <ul>
-                                <li>MAE: 0.88% (excellent accuracy)</li>
-                                <li>Tail-risk analysis for expensive properties</li>
-                                <li>Stratified cross-validation RMSE verification</li>
-                            </ul>
-                        </div>
-
-                        <div class="metrics">
-                            <strong>Business Impact:</strong> Tail-risk-aware regression improves real-world deployment reliability, ensures accurate pricing for premium properties, and supports fair market valuations.
-                        </div>
-
-                        <div class="project-section">
-                            <strong>Deployment:</strong>
-                            <ul>
-                                <li>FastAPI inference service with real-time pricing</li>
-                                <li>Partial input handling for missing features</li>
-                                <li>Robust schema alignment for production data</li>
-                            </ul>
-                        </div>
-
-                        <img src="static/project3_graph.jpeg" alt="House Price Prediction: Actual vs Predicted & Feature Importance" style="width: 100%; border-radius: 8px; margin: 20px 0;">
-                    </div>
-                </div>
-
-                <!-- Project 4: Fraud Detection -->
+                <!-- Project 4: Credit Card Fraud Detection System -->
                 <div class="project-card">
                     <div class="project-header">
                         <div>

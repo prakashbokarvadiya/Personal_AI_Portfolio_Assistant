@@ -1,6 +1,6 @@
 # Prakash Bokarvadiya - Data Science Portfolio with AI Chatbot
 
-A professional, one-page portfolio website for a Data Science fresher featuring an intelligent AI chatbot powered by OpenAI's GPT-3.5-turbo.
+A professional, one-page portfolio website for a Data Science fresher featuring an intelligent AI chatbot powered by groq.
 
 ## 🎯 Features
 
@@ -32,7 +32,7 @@ A professional, one-page portfolio website for a Data Science fresher featuring 
 
 ### Prerequisites
 - Python 3.8+ (or Node.js 14+)
-- OpenAI API key from [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+- OpenAI API key from [platform.groq.com/api-keys](https://platform.groq.com/api-keys)
 
 ### Step 1: Clone or Download
 ```bash
@@ -45,7 +45,7 @@ cd "e:\1 Month\project 5"
 # Create .env file
 cp .env.example .env
 
-# Add your OpenAI API key
+# Add your API key
 # Edit .env and replace sk-your-api-key-here with your actual key
 ```
 
@@ -110,7 +110,7 @@ const BACKEND_URL = 'https://your-production-backend.com/chat';
 ### Change AI Model
 In `backend.py`, update:
 ```python
-model="gpt-3.5-turbo"  # Change to "gpt-4" for more advanced responses
+model="llm"  # Change to "groq" for more advanced responses
 ```
 
 ## 🔐 Security
@@ -157,13 +157,6 @@ Health check endpoint.
 }
 ```
 
-## 💰 Costs
-
-- **GPT-3.5-turbo**: ~$0.0005 per message (very affordable)
-- **Free tier**: $5 credit for 3 months
-- **Typical usage**: 1,000 messages = ~$0.50
-
-Monitor usage at: [platform.openai.com/account/usage](https://platform.openai.com/account/usage)
 
 ## 🚢 Deployment
 
@@ -172,7 +165,7 @@ Monitor usage at: [platform.openai.com/account/usage](https://platform.openai.co
 heroku login
 heroku create your-bot-name
 git push heroku main
-heroku config:set OPENAI_API_KEY=sk-your-key
+heroku config:set groq_API_KEY=sk-your-key
 ```
 
 ### AWS Lambda
@@ -211,13 +204,13 @@ zappa deploy dev
 | `OPENAI_API_KEY not found` | Create `.env` file with your API key |
 | Chatbot not responding | Ensure backend is running: `python backend.py` |
 | CORS error | Check `BACKEND_URL` in `index.html` |
-| 401 API error | Verify API key is valid at https://platform.openai.com/account |
+| 401 API error | Verify API key is valid at https://platform.geoq.com/account |
 
 For more troubleshooting, see **CHATBOT_SETUP.md**.
 
 ## 📞 Support
 
-- **OpenAI API Docs**: https://platform.openai.com/docs
+- **OpenAI API Docs**: https://platform.groq.com/docs
 - **FastAPI**: https://fastapi.tiangolo.com
 - **Express.js**: https://expressjs.com
 
@@ -246,7 +239,7 @@ This project is open source and available under the MIT License.
 
 ## 🎉 Getting Started
 
-1. Get OpenAI API key from [platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+1. Get  API key from [platform.geoq.com/api-keys](https://platform.geoq.com/api-keys)
 2. Create `.env` file with your API key
 3. Install dependencies: `pip install -r requirements.txt`
 4. Run backend: `python backend.py`
