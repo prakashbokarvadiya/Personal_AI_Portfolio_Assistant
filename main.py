@@ -79,7 +79,7 @@ GitHub: https://github.com/prakashbokarvadiya
 ==============================
 CAREER OBJECTIVE
 ==============================
-Seeking entry-level **Data Scientist or Data Analyst roles** where he can apply machine learning, statistical analysis, and data-driven insights to solve real-world business challenges and deliver measurable impact.
+Building Business-Impactful ML Solutions with Data
 
 ==============================
 FEATURED PROJECTS (4 of 9+)

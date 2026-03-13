@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prakash Bokarvadiya | Data Science Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,23 +15,23 @@
         }
 
         :root {
-            --primary-color: #1a1a2e;
-            --secondary-color: #16213e;
-            --accent-color: #0f3460;
-            --highlight-color: #e94560;
-            --text-light: #eaeaea;
-            --text-dark: #16213e;
-            --border-color: #0f3460;
-            --success-color: #4ade80;
-            --warning-color: #f59e0b;
-            --danger-color: #e94560;
+            --primary-color: #071a26;
+            --secondary-color: #0e2a3a;
+            --accent-color: #1da1f2;
+            --highlight-color: #ff4d6d;
+            --text-light: #f8fafc;
+            --text-dim: #b0c4d4;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Outfit', 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-light);
+            background: #051622;
+            overflow-x: hidden;
         }
 
         /* Scrollbar Styling */
@@ -49,42 +52,196 @@
             background: var(--highlight-color);
         }
 
-        /* Header & Navigation */
-        header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: var(--text-light);
-            padding: 35px 20px 30px 20px;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        /* Header & Navbar */
+        .navbar {
+            background: rgba(7, 26, 38, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .header-content h1 {
-            font-size: 2.1rem;
-            margin-bottom: 6px;
-            font-weight: 700;
-            letter-spacing: -1px;
-            line-height: 1.3;
+        .navbar .logo {
+            font-size: 1.6rem;
+            color: var(--accent-color);
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        .header-content .tagline {
-            font-size: 0.95rem;
-            color: var(--highlight-color);
-            margin-bottom: 8px;
-            margin-top: 3px;
+        .navbar nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin: 0 15px;
             font-weight: 500;
-            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .header-content .career-objective {
-            font-size: 0.88rem;
-            color: rgba(234, 234, 234, 0.85);
-            margin-top: 10px;
-            font-style: italic;
-            line-height: 1.5;
-            letter-spacing: 0.3px;
+        .navbar nav a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .cv-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3);
+        }
+
+        .cv-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(29, 161, 242, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 10%;
+            background: radial-gradient(circle at 10% 20%, rgba(29, 161, 242, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(255, 77, 109, 0.05) 0%, transparent 40%);
+            color: white;
+            min-height: calc(100vh - 70px);
+        }
+
+        .hero-image {
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 50px rgba(29, 161, 242, 0.2));
+        }
+
+        .hero-image img {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid rgba(29, 161, 242, 0.1);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p:first-child {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin: 10px 0;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, #fff, var(--text-dim));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h3 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .typing-text {
+            color: var(--accent-color);
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            border-right: 3px solid var(--accent-color);
+            animation: typing 3s steps(20, end) infinite alternate,
+                       blink 0.75s step-end infinite;
+        }
+
+        .hero-content .bio {
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn1 {
+            background: #1da1f2;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn2 {
+            background: transparent;
+            border: 1px solid #1da1f2;
+            padding: 12px 30px;
+            color: white;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn1:hover { background: #1991db; }
+        .btn2:hover { background: rgba(29, 161, 242, 0.1); }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 10%;
+            background: rgba(14, 42, 58, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat h2 {
+            font-size: 42px;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+            font-weight: 800;
+        }
+
+        .stat p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .container {
@@ -95,33 +252,35 @@
 
         /* Section Styling */
         section {
-            margin: 50px 0;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            margin: 80px 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 50px;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
         }
 
         h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid var(--highlight-color);
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
         }
 
         h3 {
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-            margin-top: 20px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-top: 30px;
+            font-weight: 700;
         }
 
         /* About Section */
         .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: center;
+            display: block;
         }
 
         .about-text h3 {
@@ -327,34 +486,45 @@
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 40px;
         }
 
         .skill-category h4 {
-            color: var(--accent-color);
-            margin: 15px 0 10px 0;
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            color: #555;
-        }
-
-        .skill-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--success-color);
-            font-weight: bold;
+            color: #fff;
+            margin: 20px 0 15px 0;
             font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-bar-container {
+            margin-bottom: 20px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .skill-progress-bg {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--accent-color), var(--highlight-color));
+            border-radius: 4px;
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.1, 0, 0.2, 1);
         }
 
         /* Contact Section */
@@ -580,32 +750,36 @@
             bottom: 80px;
             right: 0;
             width: 380px;
-            height: 500px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16);
+            height: 550px;
+            background: rgba(14, 42, 58, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             overflow: hidden;
             opacity: 0;
-            transform: scale(0.8);
+            transform: translateY(20px);
             pointer-events: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .chatbot-window.active {
             opacity: 1;
-            transform: scale(1);
+            transform: translateY(0);
             pointer-events: auto;
         }
 
         .chatbot-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: rgba(29, 161, 242, 0.1);
             color: white;
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .chatbot-header h3 {
@@ -631,7 +805,7 @@
             flex: 1;
             overflow-y: auto;
             padding: 20px;
-            background: #f9f9f9;
+            background: transparent;
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -680,9 +854,10 @@
         }
 
         .message.assistant .message-bubble {
-            background: #e8e8e8;
-            color: #333;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-light);
             border-bottom-left-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .message.error .message-bubble {
@@ -730,8 +905,8 @@
 
         .chatbot-input-area {
             padding: 15px;
-            border-top: 1px solid #e0e0e0;
-            background: white;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: transparent;
             display: flex;
             gap: 10px;
         }
@@ -810,18 +985,109 @@
                 display: none;
             }
         }
+        /* Premium Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism Classes */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: 16px;
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <h1>Prakash Bokarvadiya</h1>
-            <div class="tagline">Data Science | Machine Learning | Business Analytics</div>
-            <p class="career-objective">Entry-level Data Scientist with hands-on experience in Python, SQL, and Machine Learning. Focused on building business-impactful ML solutions through data-driven decision making.</p>
-            <div class="stats-badge">9+ Projects Completed</div>
-        </div>
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <h2 class="logo">Portfolio</h2>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <a href="static/Prakash_Bokarvadiya_Update.pdf" download class="cv-btn text-decoration-none" style="display: inline-block; text-decoration: none;">Download CV</a>
     </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-image">
+            <img src="static/profile.jpeg" alt="Prakash Bokarvadiya">
+        </div>
+        <div class="hero-content">
+            <p>Hello I'm</p>
+            <h1>Prakash Bokarvadiya</h1>
+            <h3>And I'm a <span class="typing-text">Data Scientist</span></h3>
+            <p class="bio">
+                Building Business-Impactful ML Solutions with Data. 
+                Focused on turning complex data into actionable insights with precision and high impact.
+            </p>
+            <div class="buttons">
+                <button class="btn1">Hire Me</button>
+                <button class="btn2" onclick="location.href='#contact'">Contact Me</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat">
+            <h2>9+</h2>
+            <p>Projects Completed</p>
+        </div>
+        <div class="stat">
+            <h2>5+</h2>
+            <p>ML Technologies</p>
+        </div>
+        <div class="stat">
+            <h2>3+</h2>
+            <p>ML Domains</p>
+        </div>
+        <div class="stat">
+            <h2>100%</h2>
+            <p>Learning Focus</p>
+        </div>
+    </section>
 
     <!-- Main Content -->
     <main class="container">
@@ -844,10 +1110,6 @@
 
                     <h3>Career Objective</h3>
                     <p>Seeking an entry-level <strong>Data Scientist / Data Analyst</strong> role where I can leverage Python, SQL, and ML expertise to solve real-world business challenges, drive revenue protection, minimize financial loss, and support data-driven decision making.</p>
-                </div>
-                <div class="about-profile">
-                    <img src="static/profile.jpeg" alt="Prakash Bokarvadiya" class="profile-image">
-                    <p style="color: #888; font-size: 0.9rem;">Prakash Bokarvadiya</p>
                 </div>
             </div>
         </section>
@@ -1144,69 +1406,42 @@
             <div class="skills-grid">
                 <div class="skill-category">
                     <h4>🐍 Python Programming</h4>
-                    <ul class="skill-list">
-                        <li>Data structures: Lists vs tuples, dictionaries, sets</li>
-                        <li>Memory management: Shallow vs deep copy</li>
-                        <li>Functional programming: Lambda, map, filter</li>
-                        <li>Exception handling & error management</li>
-                        <li>Object-oriented programming (OOP)</li>
-                    </ul>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Python (Core + Advanced)</span><span>95%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 95%;"></div></div>
+                    </div>
 
                     <h4>🗄️ SQL & Databases</h4>
-                    <ul class="skill-list">
-                        <li>Queries: WHERE vs HAVING clauses</li>
-                        <li>Joins: INNER, LEFT, RIGHT, FULL OUTER</li>
-                        <li>Aggregation: COUNT(*) vs COUNT(column), GROUP BY</li>
-                        <li>Window functions: ROW_NUMBER, RANK, LAG, LEAD</li>
-                        <li>Data cleaning: Duplicate detection & deletion</li>
-                    </ul>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>SQL (Joins, Windows, Aggregation)</span><span>92%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 92%;"></div></div>
+                    </div>
 
                     <h4>📊 Data Analysis</h4>
-                    <ul class="skill-list">
-                        <li>Exploratory Data Analysis (EDA)</li>
-                        <li>Data cleaning & preprocessing</li>
-                        <li>Feature engineering & selection</li>
-                        <li>Statistical analysis & hypothesis testing</li>
-                        <li>Data visualization (Matplotlib, Seaborn, Plotly)</li>
-                    </ul>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>EDA & Feature Engineering</span><span>90%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+                    </div>
                 </div>
 
                 <div class="skill-category">
                     <h4>🤖 Machine Learning</h4>
-                    <ul class="skill-list">
-                        <li>Supervised learning: Regression, Classification</li>
-                        <li>Model training & validation</li>
-                        <li>Overfitting vs underfitting detection</li>
-                        <li>Regularization: L1, L2, Elastic Net</li>
-                        <li>Cross-validation & hyperparameter tuning</li>
-                    </ul>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Supervised & Unsupervised Learning</span><span>88%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+                    </div>
 
-                    <h4>📈 Model Evaluation & Metrics</h4>
-                    <ul class="skill-list">
-                        <li>Confusion matrix & derived metrics</li>
-                        <li>Precision, Recall, F1-score, Accuracy</li>
-                        <li>ROC-AUC & Precision-Recall curves</li>
-                        <li>Threshold tuning for business optimization</li>
-                        <li>Model explainability (SHAP, Feature importance)</li>
-                    </ul>
+                    <h4>📈 Model Evaluation</h4>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>Metrics & Threshold Optimization</span><span>95%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 95%;"></div></div>
+                    </div>
 
-                    <h4>💼 Business-Focused ML</h4>
-                    <ul class="skill-list">
-                        <li>Class imbalance handling (SMOTE, cost-aware learning)</li>
-                        <li>Business cost minimization & decision thresholds</li>
-                        <li>Revenue protection & churn prevention</li>
-                        <li>Risk classification & quantification</li>
-                        <li>Deployment & API integration</li>
-                    </ul>
-
-                    <h4>🚀 Deployment & Tools</h4>
-                    <ul class="skill-list">
-                        <li>FastAPI for ML backend services</li>
-                        <li>Streamlit for interactive dashboards</li>
-                        <li>Model serialization (joblib, pickle)</li>
-                        <li>sklearn pipelines for modular workflows</li>
-                        <li>Git & version control</li>
-                    </ul>
+                    <h4>🚀 Deployment</h4>
+                    <div class="skill-bar-container">
+                        <div class="skill-info"><span>FastAPI, Streamlit, Git</span><span>85%</span></div>
+                        <div class="skill-progress-bg"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1463,15 +1698,72 @@
             // Configure API URL - change this if backend is on different port/host
             const BACKEND_URL = 'https://personal-ai-portfolio-assistant-sl98.onrender.com/chat';
             window.portfolioChatbot = new PortfolioChatbot(BACKEND_URL);
+
+            // Scroll Reveal Animation
+            const revealElements = document.querySelectorAll('section, .project-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        
+                        // If it's the stats section, trigger counters
+                        if (entry.target.classList.contains('stats')) {
+                            animateCounters();
+                        }
+
+                        // If it's the skills section, animate bars
+                        if (entry.target.id === 'skills') {
+                            animateSkillBars();
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+
+            function animateCounters() {
+                const counters = document.querySelectorAll('.stat h2');
+                counters.forEach(counter => {
+                    const target = parseInt(counter.innerText);
+                    const suffix = counter.innerText.replace(/[0-9]/g, '');
+                    let count = 0;
+                    const duration = 2000;
+                    const increment = target / (duration / 16);
+
+                    const updateCount = () => {
+                        if (count < target) {
+                            count += increment;
+                            counter.innerText = Math.floor(count) + suffix;
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.innerText = target + suffix;
+                        }
+                    };
+                    updateCount();
+                });
+            }
+
+            function animateSkillBars() {
+                const bars = document.querySelectorAll('.skill-progress-fill');
+                bars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 100);
+                });
+            }
         });
 
         // Analytics & Tracking (Optional - for production use)
         // You can add Google Analytics or other tracking here
 
         // Console Message for Developers
-        console.log('%cPrakash Bokarvadiya - Data Science Portfolio', 'font-size: 20px; color: #0f3460; font-weight: bold;');
+        console.log('%cPrakash Bokarvadiya - Data Science Portfolio', 'font-size: 20px; color: #1da1f2; font-weight: bold;');
         console.log('%cLooking for talented developers? Check out the code!', 'font-size: 12px; color: #666;');
-
     </script>
 </body>
 </html>
